@@ -121,14 +121,16 @@ JLCPCB does not accept a board this size with gold fingers as a single board:
 Sources: [JLCPCB: gold fingers](https://jlcpcb.com/help/article/jlcpcb-gold-fingers),
 [JLCPCB order FAQ: gold fingers](https://jlcpcb.com/quote/pcbOrderFaq/Gold%20Fingers).
 
-**The order uses the 2-up panel in [fab/panel/](fab/panel/)** (built with KiKit 1.8.1; `make_panel.sh` rebuilds it):
+**The order uses the 2-up panel in [fab/panel/](fab/panel/)** (built with KiKit 1.8.1 and a small framing plugin, `panel_framing.py`;
+`make_panel.sh` rebuilds it):
 
 - **Layout:** two boards side by side, finger edges flush on the panel's bottom edge. That edge carries nothing else: no rail,
   no tab, no V-cut.
-- **Tabs:** mouse-bite tabs, two per long side, about 20 and 40 mm from the finger edge. Each is 3 mm wide with 0.5 mm NPTH
-  holes at 1.0 mm pitch, which keeps drills 0.5 mm apart.
-- **Rails:** 5 mm rails left and right only, with 3 fiducials (1 mm copper, 2 mm opening) and 4 tooling holes (Ø2.0).
-- **Size:** 78.7 × 60.4 mm, which clears 50 × 50.
+- **Rails:** 5 mm rails on the left and right, and a top rail (8 mm, opposite the fingers). The panel is **78.6 × 70.5 mm**
+  (78.7 × 70.6 in the Gerbers), which meets JLCPCB Standard PCBA's ≥ 70 mm on each side.
+- **Tabs:** mouse-bites, 3 mm wide, 0.5 mm NPTH at 1.0 mm pitch: two per long side and two per board on the top edge.
+- **Fiducials:** 3 fiducials (1 mm copper, 2 mm opening) on the side rails, 10 mm from the top and bottom edges.
+- **Tooling holes:** 4 × Ø2.0 at the corners, 5 mm from the top and bottom edges.
 - **Checks:** KiCad DRC 0 errors and 0 unconnected; the 104 finger-pad edge findings are the card-edge override, 52 per board.
   gerber_check (jlcpcb-2layer-cardedge): **all pass, including outline**.
 
@@ -142,7 +144,7 @@ PCB:
 |---|---|
 | Base material | FR-4 |
 | Layers | 2 |
-| Dimensions | 78.7 × 60.4 mm |
+| Dimensions | 78.6 × 70.5 mm |
 | PCB qty | 5 panels (= 10 boards; 5 is JLC's minimum) |
 | Product type | industrial/consumer |
 | Different design | 1 |
@@ -161,7 +163,7 @@ PCBA:
 
 | Option | Setting |
 |---|---|
-| Type | **Economic** |
+| Type | **Standard** (JLCPCB disables Economic with ENIG / gold fingers) |
 | Side | **Top** |
 | Qty | **3 panels = 6 boards** (≥ 5) |
 | Tooling holes | added by customer |
@@ -169,7 +171,7 @@ PCBA:
 | Files | `fab/panel/bobcat-rak-stack-adapter-panel-bom.csv` and `-cpl.csv` |
 
 - **BOM:** J1_0, J1_1 = C444927 (SOFNG PCIE-52P52H, Extended, offered for Economic and Standard); R47P_0, R47P_1 = C17168 (0R 0402, Basic). Every other footprint is DNP and left out.
-- **Economic vs Standard:** J1 is a plain single-sided SMT part that JLCPCB lists for Economic assembly. Standard adds cost and lead
+- **Economic vs Standard:** Standard. JLCPCB offers no Economic assembly with ENIG/gold fingers, and Standard needs ≥ 70 mm per side, which the top rail provides.
   time for nothing on this board.
 
 **J1 rotation in JLCPCB's preview.** The KiCad footprint *is* the EasyEDA/JLC footprint for C444927 (imported unchanged), placed at

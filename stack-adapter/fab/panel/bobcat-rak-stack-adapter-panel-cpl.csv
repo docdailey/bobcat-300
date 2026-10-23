@@ -1,5 +1,5 @@
 Designator,Mid X,Mid Y,Layer,Rotation
-J1_0,131.850mm,-71.000mm,Top,180
-J1_1,165.150mm,-71.000mm,Top,180
-R47P_0,123.450mm,-62.500mm,Top,270
-R47P_1,156.750mm,-62.500mm,Top,270
+J1_0,131.850mm,-81.200mm,Top,180
+J1_1,165.150mm,-81.200mm,Top,180
+R47P_0,123.450mm,-72.700mm,Top,270
+R47P_1,156.750mm,-72.700mm,Top,270

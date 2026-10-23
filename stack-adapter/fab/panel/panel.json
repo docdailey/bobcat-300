@@ -16,7 +16,7 @@
     "hwidth": "3mm",
     "vwidth": "3mm",
     "hcount": 2,
-    "vcount": 0
+    "vcount": 2
   },
   "cuts": {
     "type": "mousebites",
@@ -26,21 +26,21 @@
     "prolong": "0.5mm"
   },
   "framing": {
-    "type": "railslr",
-    "width": "5mm",
-    "space": "2mm"
+    "type": "plugin",
+    "code": "panel_framing.py.SidesAndTopRails",
+    "arg": "5,8,2,70.5"
   },
   "fiducials": {
     "type": "3fid",
     "hoffset": "2.5mm",
-    "voffset": "3.85mm",
+    "voffset": "10mm",
     "coppersize": "1mm",
     "opening": "2mm"
   },
   "tooling": {
     "type": "4hole",
     "hoffset": "2.5mm",
-    "voffset": "8mm",
+    "voffset": "5mm",
     "size": "2mm"
   },
   "post": {

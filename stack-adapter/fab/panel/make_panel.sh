@@ -7,7 +7,10 @@ KP=${KP:-/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Vers
 KC=${KC:-/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli}
 B=bobcat-rak-stack-adapter-panel
 SRC=../../kicad/bobcat-rak-stack-adapter
-$KP make_panel.py $SRC.kicad_pcb panel.json $B.kicad_pcb 2>&1 | grep -vE "Debug: Adding|memory leak|stdpbase" || true
+rm -f $B.kicad_pcb
+$KP make_panel.py $SRC.kicad_pcb panel.json $B.kicad_pcb > panel.log 2>&1 || true
+grep -vE "Debug: Adding|memory leak|stdpbase" panel.log || true
+grep -q "^panel written" panel.log || { echo "KiKit failed; see panel.log" >&2; exit 1; }
 rm -f "~$B.kicad_pro.lck"
 # KiKit writes KiCad's default 0.2 mm netclass; the board was routed to the source's rules
 python3 - "$B.kicad_pro" "$SRC.kicad_pro" <<'PY'

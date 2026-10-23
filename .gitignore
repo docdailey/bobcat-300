@@ -8,3 +8,5 @@ _autosave-*
 #auto_saved_files#
 # macOS
 .DS_Store
+__pycache__/
+*.pyc
