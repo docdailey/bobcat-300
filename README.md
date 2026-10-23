@@ -56,3 +56,8 @@ Each doc ends with a *Contradictions & open questions* section. Corrections are 
 - Armbian image for the G285: sicXnull/Bobcat-Armbian.
 - Community pinout reference: helium-repurposed.deobfuscated.org, *Devices / Bobber / Bobcat Miner 300*.
 - Semtech `sx1302_hal`; RAKwireless RAK5146 datasheet; u-blox NEO-M8 datasheet and hardware integration manual.
+
+## License
+
+MIT (see [LICENSE](LICENSE)), except `tools/hal-bobcat.patch`, which modifies Semtech's `sx1302_hal` and stays under
+Semtech's Revised BSD License.
