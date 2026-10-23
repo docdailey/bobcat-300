@@ -21,7 +21,8 @@ Each doc ends with a *Contradictions & open questions* section. Corrections are 
 | [docs/bare-metal-rust.md](docs/bare-metal-rust.md) | Bare-metal Rust image for the RK3566 (QEMU-tested), the carved-core-3 Rust PPS engine that runs on hardware, the deployed Linux time-transfer logger, measured results and lessons |
 | [docs/gnss-populate.md](docs/gnss-populate.md) | The unpopulated u-blox NEO-footprint GNSS site: pinout, parts to fit and where, antenna path, PPS routing, beep-test results, install plan, risks |
 | [docs/socket-pinout-rak5146.md](docs/socket-pinout-rak5146.md) | The **non-standard** concentrator socket pinout (proven with a logic analyzer), why a RAK5146 reads `0xFF` in a stock G285, and the interposer spec |
-| [interposer/](interposer/) | Card-edge interposer that lets a RAK5146 (SX1303 + GPS) run in the G285 socket (design in progress) |
+| [stack-adapter/](stack-adapter/) | **Rev B:** Mini Card-sized stack adapter that lets a RAK5146 (SX1303 + GPS) run in the G285 socket; the RAK stacks right on top (routed, DRC-clean review release) |
+| [interposer-rev-a/](interposer-rev-a/) | Rev A breakout interposer (50 × 109.5 mm, superseded by the stack adapter) |
 | [tools/](tools/) | Small scripts used for the work (see below) |
 
 ## Key facts at a glance

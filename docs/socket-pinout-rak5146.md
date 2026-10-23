@@ -45,7 +45,7 @@ Status tags: **[VERIFIED: source]**, **[UNVERIFIED: source]**, **[CONTRADICTED: 
 - In an unmodified G285 the RAK5146 reads chip version 0xFF (MISO idle-high, CS never reaches pin 51), in both units.
   **[VERIFIED: chip_id on unit 1 and unit 2]**
 
-## Interposer specification
+## Interposer specification (rev A; rev B keeps the electrical core)
 
 - Card-edge (gold-finger) mini-PCIe board, full-size outline, 1.0 mm, plugs into the Bobcat; mini-PCIe socket on top for the RAK5146.
 - Reroute: Bobcat 3 → RAK 45 (SCK), 5 → 47 (MISO), 6 → 49 (MOSI), 7 → 51 (CS).
@@ -53,7 +53,12 @@ Status tags: **[VERIFIED: source]**, **[UNVERIFIED: source]**, **[CONTRADICTED: 
 - Straight through: 3.3 V (2, 24, 39, 41, 52), all grounds, 22 (held low = RAK running).
 - Every pin to a 0.1 in. header behind a default-closed solder jumper (doubles as a breakout/probe board).
 - No off-the-shelf pass-through interposer with per-pin jumpers was found (only socket-only breakouts). **[VERIFIED: searches 2026-10-22]**
-- Design in progress in a tscircuit-based board pipeline; fab files not yet released. **[UNVERIFIED: in progress]**
+- Rev A (breakout interposer, every pin on jumpers + headers, 50 × 109.5 mm) was routed and DRC-clean but rejected as too
+  big: [../interposer-rev-a/](../interposer-rev-a/).
+- **Rev B, the stack adapter** ([../stack-adapter/](../stack-adapter/)): Mini Card width, 60.3 mm long, RAK socket right behind
+  the fingers so the RAK card stacks over the Bobcat's card area. Only the four SPI reroutes, 3.3 V, GND and 22; 19/23 not
+  connected (DNP 0R options for 19, 23, 30–33). No breakout. Routed and KiCad-DRC-clean; not fabricated.
+  **[UNVERIFIED: not built or tested]**
 
 ## Lessons (methods)
 

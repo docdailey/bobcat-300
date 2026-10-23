@@ -1,0 +1,1428 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-22T22:44:46",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.4",
+    "schematic_parity": [],
+    "source": "bobcat-rak-stack-adapter.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 1 [<no net>] of CE1 on F.Cu",
+                    "pos": {
+                        "x": 88.2,
+                        "y": 128.875
+                    },
+                    "uuid": "4169d954-0eb8-36f4-23f9-6b6c56ab0dcc"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 2 [V3V3] of CE1 on B.Cu",
+                    "pos": {
+                        "x": 88.6,
+                        "y": 128.875
+                    },
+                    "uuid": "348c23e0-1d68-26df-6f5c-719e3eaf43a3"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 3 [SPI_3_45] of CE1 on F.Cu",
+                    "pos": {
+                        "x": 89.0,
+                        "y": 128.875
+                    },
+                    "uuid": "57503ee0-56bb-7661-04c7-2ba24d2d1f1d"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 4 [GND] of CE1 on B.Cu",
+                    "pos": {
+                        "x": 89.4,
+                        "y": 128.875
+                    },
+                    "uuid": "417dd1b4-2f7a-4cec-5f8d-9474116a8a2c"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 5 [SPI_5_47] of CE1 on F.Cu",
+                    "pos": {
+                        "x": 89.8,
+                        "y": 128.875
+                    },
+                    "uuid": "6623ba40-142f-6f81-3dc4-db3e7046da03"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 6 [SPI_6_49] of CE1 on B.Cu",
+                    "pos": {
+                        "x": 90.2,
+                        "y": 128.875
+                    },
+                    "uuid": "1d6fd09e-5021-72fe-7d2c-eaa24a7b4842"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 7 [SPI_7_51] of CE1 on F.Cu",
+                    "pos": {
+                        "x": 90.6,
+                        "y": 128.875
+                    },
+                    "uuid": "65093240-1314-e781-3edf-633e6f2c5203"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 8 [<no net>] of CE1 on B.Cu",
+                    "pos": {
+                        "x": 91.0,
+                        "y": 128.875
+                    },
+                    "uuid": "26d33080-78c7-7b3f-3544-3a021cb010bd"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 9 [GND] of CE1 on F.Cu",
+                    "pos": {
+                        "x": 91.4,
+                        "y": 128.875
+                    },
+                    "uuid": "47fe6180-09f5-e93f-5bea-33fe52218143"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 10 [<no net>] of CE1 on B.Cu",
+                    "pos": {
+                        "x": 91.8,
+                        "y": 128.875
+                    },
+                    "uuid": "703003a0-3ddb-b1a1-1418-991e660ce3dd"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 11 [<no net>] of CE1 on F.Cu",
+                    "pos": {
+                        "x": 92.2,
+                        "y": 128.875
+                    },
+                    "uuid": "4f54bd60-5eb6-f7e1-0cc2-ad2245319d9d"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 12 [<no net>] of CE1 on B.Cu",
+                    "pos": {
+                        "x": 92.6,
+                        "y": 128.875
+                    },
+                    "uuid": "7f9ddc60-2da9-91a1-244a-b91e763f03dd"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 13 [<no net>] of CE1 on F.Cu",
+                    "pos": {
+                        "x": 93.0,
+                        "y": 128.875
+                    },
+                    "uuid": "7d2c14e0-30df-a061-2114-aa5e7308f51d"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 14 [<no net>] of CE1 on B.Cu",
+                    "pos": {
+                        "x": 93.4,
+                        "y": 128.875
+                    },
+                    "uuid": "2fb0448e-4147-da12-4dc0-074e23381752"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 15 [GND] of CE1 on F.Cu",
+                    "pos": {
+                        "x": 93.8,
+                        "y": 128.875
+                    },
+                    "uuid": "70165340-1e22-0881-33d2-423e7a397303"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 87.15,
+                        "y": 130.15
+                    },
+                    "uuid": "bda2c257-5f14-42f8-b092-b963cfe6379f"
+                },
+                {
+                    "description": "Pad 16 [<no net>] of CE1 on B.Cu",
+                    "pos": {
+                        "x": 94.2,
+                        "y": 128.875
+                    },
+                    "uuid": "0a9e1b30-7b96-39d0-1371-a7905d867710"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 17 [<no net>] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 97.8,
+                        "y": 128.875
+                    },
+                    "uuid": "5bcf67e0-09db-1d21-4819-2d9e65f287a3"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 18 [GND] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 98.2,
+                        "y": 128.875
+                    },
+                    "uuid": "005e426e-130c-b052-2677-a31239e295d2"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 19 [B19] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 98.6,
+                        "y": 128.875
+                    },
+                    "uuid": "67d28140-15de-3681-3c16-143e71f5a103"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 20 [<no net>] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 99.0,
+                        "y": 128.875
+                    },
+                    "uuid": "7c48ff60-31c2-b5e1-2031-94de7225df9d"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 21 [GND] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 99.4,
+                        "y": 128.875
+                    },
+                    "uuid": "6e94f3e0-43eb-d241-0993-679e5712a17d"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 22 [RST22] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 99.8,
+                        "y": 128.875
+                    },
+                    "uuid": "6f6619a0-3ea5-9ba1-134e-af1e6542f9dd"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 23 [B23] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 100.2,
+                        "y": 128.875
+                    },
+                    "uuid": "0f08b026-0462-429a-17cd-355a2b38281a"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 24 [V3V3] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 100.6,
+                        "y": 128.875
+                    },
+                    "uuid": "63630040-4aa8-b501-074b-95be593fe07d"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 25 [<no net>] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 101.0,
+                        "y": 128.875
+                    },
+                    "uuid": "6e7f0894-7e16-04ac-6aab-11ec57401f2c"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 26 [GND] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 101.4,
+                        "y": 128.875
+                    },
+                    "uuid": "575fe6e0-56ab-ce61-04b7-83a24d3cc71d"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 27 [GND] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 101.8,
+                        "y": 128.875
+                    },
+                    "uuid": "2f118c00-22e2-bebf-74d7-097e3934abc3"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 28 [<no net>] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 102.2,
+                        "y": 128.875
+                    },
+                    "uuid": "00c264b4-12a8-8e0c-2613-80cc397e738c"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 29 [GND] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 102.6,
+                        "y": 128.875
+                    },
+                    "uuid": "38ee5cc0-2583-6a00-1218-774001527b80"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 30 [B30] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 103.0,
+                        "y": 128.875
+                    },
+                    "uuid": "5fd49adc-733f-8d9c-7955-7fa465ea8ce4"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 31 [B31] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 103.4,
+                        "y": 128.875
+                    },
+                    "uuid": "27a8a2d0-3b13-9590-4e7e-885061e97b10"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 32 [B32] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 103.8,
+                        "y": 128.875
+                    },
+                    "uuid": "1083553c-02e7-9d84-1652-904429bd8304"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 33 [B33] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 104.2,
+                        "y": 128.875
+                    },
+                    "uuid": "0f6cd26c-03fe-2054-1769-13142ad405d4"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 34 [GND] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 104.6,
+                        "y": 128.875
+                    },
+                    "uuid": "3f193840-1ada-2ce1-74cd-9202313f08dd"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 35 [GND] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 105.0,
+                        "y": 128.875
+                    },
+                    "uuid": "551c8040-0328-3581-4ecc-153e5f3fa003"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 36 [<no net>] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 105.4,
+                        "y": 128.875
+                    },
+                    "uuid": "58528f00-065e-4441-4b96-067e6275aec3"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 37 [GND] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 105.8,
+                        "y": 128.875
+                    },
+                    "uuid": "274528c0-2aaf-21ff-7ca3-6cbe31684883"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 38 [<no net>] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 106.2,
+                        "y": 128.875
+                    },
+                    "uuid": "73e29a40-3a29-1b01-17cb-2fbe69bf7a7d"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 39 [V3V3] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 106.6,
+                        "y": 128.875
+                    },
+                    "uuid": "12fcc1a8-7c0b-1fb8-0b13-011865e51d88"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 40 [GND] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 107.0,
+                        "y": 128.875
+                    },
+                    "uuid": "0fb2a6c0-4241-a3ff-6bca-114219d5c683"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 41 [V3V3] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 107.4,
+                        "y": 128.875
+                    },
+                    "uuid": "12e8b580-3f0b-953f-6f00-20021d0bd543"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 42 [<no net>] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 107.8,
+                        "y": 128.875
+                    },
+                    "uuid": "3bae004e-354a-1e52-59bd-c30e173a5b92"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 43 [GND] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 108.2,
+                        "y": 128.875
+                    },
+                    "uuid": "02b69580-4f3d-b53f-5ece-00020cd9b543"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 44 [<no net>] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 108.6,
+                        "y": 128.875
+                    },
+                    "uuid": "015fa090-6f98-7e10-1f6f-63505188bb50"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 45 [<no net>] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 109.0,
+                        "y": 128.875
+                    },
+                    "uuid": "416a1c08-2f8e-0298-5f79-dec8117e3fd8"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 46 [<no net>] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 109.4,
+                        "y": 128.875
+                    },
+                    "uuid": "2539a654-720c-3494-4121-3d2c0bb15114"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 47 [<no net>] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 109.8,
+                        "y": 128.875
+                    },
+                    "uuid": "1dcc3248-507d-d4a8-7cd0-88f84a1ee698"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 48 [<no net>] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 110.2,
+                        "y": 128.875
+                    },
+                    "uuid": "733d1eec-1bca-c274-552d-5c2c39da8534"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 49 [<no net>] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 110.6,
+                        "y": 128.875
+                    },
+                    "uuid": "126a05de-5e8e-18c2-3079-c89e407e5602"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 50 [GND] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 111.0,
+                        "y": 128.875
+                    },
+                    "uuid": "55c67e40-1b31-a060-73d6-410002de2260"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 51 [<no net>] of CE2 on F.Cu",
+                    "pos": {
+                        "x": 111.4,
+                        "y": 128.875
+                    },
+                    "uuid": "0d953474-3f3d-59cc-73f0-17f4271d89b4"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 96.9,
+                        "y": 130.15
+                    },
+                    "uuid": "48c96594-592b-45a4-82f3-0cbd687dfc77"
+                },
+                {
+                    "description": "Pad 52 [V3V3] of CE2 on B.Cu",
+                    "pos": {
+                        "x": 111.8,
+                        "y": 128.875
+                    },
+                    "uuid": "6e814380-3bcf-a120-091d-fec02993a3a0"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 100.0,
+                        "y": 120.85
+                    },
+                    "uuid": "024f8698-6960-eba8-2aee-a21840c1d028"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint MH1",
+                    "pos": {
+                        "x": 87.9,
+                        "y": 82.1
+                    },
+                    "uuid": "031b61e0-0742-73c1-11a0-49621bfe1f03"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint CE1",
+                    "pos": {
+                        "x": 91.2,
+                        "y": 128.875
+                    },
+                    "uuid": "073c5ccc-3a20-8194-7b7d-5ff44325c1ac"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint MH3",
+                    "pos": {
+                        "x": 87.9,
+                        "y": 72.8
+                    },
+                    "uuid": "0b0fc860-156d-9e01-1fcb-73a22a294943"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint R33",
+                    "pos": {
+                        "x": 107.0,
+                        "y": 112.35
+                    },
+                    "uuid": "0e3639fe-79e6-ac3e-1a68-e182514790be"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint R31",
+                    "pos": {
+                        "x": 102.6,
+                        "y": 112.35
+                    },
+                    "uuid": "107377c0-30e9-66a0-7246-45004c5cdca0"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint MH2",
+                    "pos": {
+                        "x": 112.1,
+                        "y": 82.1
+                    },
+                    "uuid": "1469fcba-7fe5-9106-1435-1ec6577b537a"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint MH4",
+                    "pos": {
+                        "x": 112.1,
+                        "y": 72.8
+                    },
+                    "uuid": "3224ae06-622a-dfba-0985-9286753604c6"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint R32",
+                    "pos": {
+                        "x": 104.8,
+                        "y": 112.35
+                    },
+                    "uuid": "40fc894a-7da6-9856-3c49-b9f60513246a"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint R23",
+                    "pos": {
+                        "x": 98.2,
+                        "y": 112.35
+                    },
+                    "uuid": "427db780-4cdb-8d21-5739-62c261973863"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint R19",
+                    "pos": {
+                        "x": 96.0,
+                        "y": 112.35
+                    },
+                    "uuid": "52644d60-2cf3-f861-53b3-c1de2ba483e3"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint CE2",
+                    "pos": {
+                        "x": 104.8,
+                        "y": 128.875
+                    },
+                    "uuid": "60852b80-4ac4-1901-3503-06821f41f403"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'tscircuit'",
+            "items": [
+                {
+                    "description": "Footprint R30",
+                    "pos": {
+                        "x": 100.4,
+                        "y": 112.35
+                    },
+                    "uuid": "61e378ca-2086-9a6a-20d6-43f662332256"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        }
+    ]
+}

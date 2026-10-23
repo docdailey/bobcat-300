@@ -1,4 +1,7 @@
-# G285 → RAK5146 interposer
+# G285 → RAK5146 interposer (rev A, superseded)
+
+> **Superseded by [../stack-adapter/](../stack-adapter/) (rev B).** Rev A is a 50 × 109.5 mm breakout/probe board that
+> overhangs the G285; the user chose a Mini Card-sized stack adapter instead. Kept for history; not to be ordered.
 
 **Status: routed and KiCad-DRC-clean (review release). Not yet fabricated or tested; check everything before ordering.**
 
