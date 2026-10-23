@@ -42,5 +42,5 @@ Drafted in a tscircuit-based board pipeline; **not fab-ready**.
 - 37 solder jumpers: reroute closed, original 3/5/6/7 ↔ 45/47/49/51 and 19/23 open; two 2×18 breakout headers.
 - Routing: 99.5% routed, 1 open net (a ground link) and 7 DRC errors from the auto-router. To finish, either rerun with
   Freerouting or complete it by hand in KiCad, then run a full KiCad DRC.
-- **Before fab: check the finger face orientation** (odd vs even contacts on top) against a known card. On a working
-  card, pin 4 (GND) is the 2nd contact from the short-end on the even face; pins 9 and 15 (GND) are on the odd face.
+- Finger face orientation checked on a real card (2026-10-22): the top (component) face carries the **odd** contacts. The 5th
+  contact from the short end on the top face beeps to ground = pin 9, matching the spec and this design. **[VERIFIED: continuity]**
