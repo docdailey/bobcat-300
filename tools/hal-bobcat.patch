@@ -1,0 +1,81 @@
+diff --git a/libloragw/src/loragw_hal.c b/libloragw/src/loragw_hal.c
+index ffc8ec0..8e11086 100644
+--- a/libloragw/src/loragw_hal.c
++++ b/libloragw/src/loragw_hal.c
+@@ -1098,8 +1098,10 @@ int lgw_start(void) {
+             ts_addr = I2C_PORT_TEMP_SENSOR[i];
+             err = i2c_linuxdev_open(I2C_DEVICE, ts_addr, &ts_fd);
+             if (err != LGW_I2C_SUCCESS) {
+-                printf("ERROR: failed to open I2C for temperature sensor on port 0x%02X\n", ts_addr);
+-                return LGW_HAL_ERROR;
++                /* bobcat: the G285 has no STTS751; carry on with a fixed temperature (lgw_get_temperature) */
++                printf("INFO: no I2C temperature sensor on port 0x%02X\n", ts_addr);
++                ts_fd = -1;
++                continue;
+             }
+ 
+             err = stts751_configure(ts_fd, ts_addr);
+@@ -1113,8 +1115,8 @@ int lgw_start(void) {
+             }
+         }
+         if (i == sizeof I2C_PORT_TEMP_SENSOR) {
+-            printf("ERROR: no temperature sensor found.\n");
+-            return LGW_HAL_ERROR;
++            printf("WARNING: no temperature sensor found, using a fixed 25.0 C for RSSI compensation\n");
++            ts_fd = -1;
+         }
+ 
+         /* Configure ADC AD338R for full duplex (CN490 reference design) */
+@@ -1223,7 +1225,7 @@ int lgw_stop(void) {
+ 
+     if (CONTEXT_COM_TYPE == LGW_COM_SPI) {
+         DEBUG_MSG("INFO: Closing I2C for temperature sensor\n");
+-        x = i2c_linuxdev_close(ts_fd);
++        x = (ts_fd < 0) ? 0 : i2c_linuxdev_close(ts_fd); /* bobcat: no sensor to close */
+         if (x != 0) {
+             printf("ERROR: failed to close I2C temperature sensor device (err=%i)\n", x);
+             err = LGW_HAL_ERROR;
+@@ -1597,7 +1599,12 @@ int lgw_get_temperature(float* temperature) {
+ 
+     switch (CONTEXT_COM_TYPE) {
+         case LGW_COM_SPI:
+-            err = stts751_get_temperature(ts_fd, ts_addr, temperature);
++            if (ts_fd < 0) {
++                *temperature = 25.0; /* bobcat: no sensor */
++                err = LGW_HAL_SUCCESS;
++            } else {
++                err = stts751_get_temperature(ts_fd, ts_addr, temperature);
++            }
+             break;
+         case LGW_COM_USB:
+             err = lgw_com_get_temperature(temperature);
+diff --git a/util_chip_id/src/chip_id.c b/util_chip_id/src/chip_id.c
+index ae670b4..868f31b 100644
+--- a/util_chip_id/src/chip_id.c
++++ b/util_chip_id/src/chip_id.c
+@@ -35,6 +35,7 @@ License: Revised BSD License, see LICENSE.TXT file include in the project
+ #include <getopt.h>     /* getopt_long */
+ 
+ #include "loragw_hal.h"
++#include "loragw_sx1302.h"
+ #include "loragw_reg.h"
+ #include "loragw_aux.h"
+ 
+@@ -205,6 +206,17 @@ int main(int argc, char **argv)
+         printf("\nINFO: concentrator EUI: 0x%016" PRIx64 "\n\n", eui);
+     }
+ 
++    /* bobcat bring-up: SX1302 (0x00/0x02) or SX1303 (0x03, fine timestamp) */
++    {
++        sx1302_model_id_t model;
++        if (sx1302_get_model_id(&model) == 0) {
++            printf("INFO: chip model ID: 0x%02X -> %s\n\n", model,
++                   model == CHIP_MODEL_ID_SX1303 ? "SX1303 (fine timestamp)" : "SX1302");
++        } else {
++            printf("ERROR: failed to read chip model ID\n");
++        }
++    }
++
+     /* Stop the gateway */
+     x = lgw_stop();
+     if (x != 0) {
