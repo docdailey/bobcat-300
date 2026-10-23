@@ -1,0 +1,51 @@
+{
+  "layout": {
+    "type": "grid",
+    "rows": 1,
+    "cols": 2,
+    "space": "2mm",
+    "renamenet": "Board_{n}-{orig}",
+    "renameref": "{orig}_{n}"
+  },
+  "source": {
+    "type": "auto",
+    "tolerance": "1mm"
+  },
+  "tabs": {
+    "type": "fixed",
+    "hwidth": "3mm",
+    "vwidth": "3mm",
+    "hcount": 2,
+    "vcount": 0
+  },
+  "cuts": {
+    "type": "mousebites",
+    "drill": "0.5mm",
+    "spacing": "1.0mm",
+    "offset": "0.25mm",
+    "prolong": "0.5mm"
+  },
+  "framing": {
+    "type": "railslr",
+    "width": "5mm",
+    "space": "2mm"
+  },
+  "fiducials": {
+    "type": "3fid",
+    "hoffset": "2.5mm",
+    "voffset": "3.85mm",
+    "coppersize": "1mm",
+    "opening": "2mm"
+  },
+  "tooling": {
+    "type": "4hole",
+    "hoffset": "2.5mm",
+    "voffset": "8mm",
+    "size": "2mm"
+  },
+  "post": {
+    "millradius": "1mm",
+    "refillzones": false,
+    "copperfill": false
+  }
+}

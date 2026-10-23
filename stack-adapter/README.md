@@ -22,7 +22,7 @@ analyzer; see [../docs/socket-pinout-rak5146.md](../docs/socket-pinout-rak5146.m
 | 6 MOSI | 49 | rerouted |
 | 7 CS | 51 | rerouted |
 | 2, 24, 39, 41, 52 | same | 3.3 V, all tied, 0.25 mm traces |
-| 4, 9, 15, 18, 21, 26, 27, 29, 34, 35, 37, 40, 43, 50 | same + socket tabs | GND, routed plus F/B pours, 144 stitching vias |
+| 4, 9, 15, 18, 21, 26, 27, 29, 34, 35, 37, 40, 43, 50 | same + socket tabs | GND, routed plus F/B pours, 131 stitching vias |
 | 22 | 22 (RAK reset, active high) | straight through (sits low = RAK running) |
 | **47** (SoC GPIO4_D0) | **19** (RAK GPS PPS out, 3.3 V) | **GPS PPS via R47P, 0R, FITTED** |
 | 45 (SoC GPIO4_C7) | 19 (RAK GPS PPS out) | alternate PPS via R45P, 0R, DNP |
@@ -121,18 +121,72 @@ JLCPCB does not accept a board this size with gold fingers as a single board:
 Sources: [JLCPCB: gold fingers](https://jlcpcb.com/help/article/jlcpcb-gold-fingers),
 [JLCPCB order FAQ: gold fingers](https://jlcpcb.com/quote/pcbOrderFaq/Gold%20Fingers).
 
-**Recommended: a 2-up panel, tab-routed.** Place two boards side by side, fingers flush on one outer (bottom) edge of the panel.
-Join them with mouse-bite tabs on the long sides only, with no V-cut and no rail on the finger edge. A 2 mm gap gives about
-64.6 × 60.3 mm, which clears 50 × 50. Order it as panel-by-customer:
+**The order uses the 2-up panel in [fab/panel/](fab/panel/)** (built with KiKit 1.8.1; `make_panel.sh` rebuilds it):
 
-- 2 layers, 1.0 mm, ENIG
-- gold fingers yes, 30° bevel
-- no V-cut
+- **Layout:** two boards side by side, finger edges flush on the panel's bottom edge. That edge carries nothing else: no rail,
+  no tab, no V-cut.
+- **Tabs:** mouse-bite tabs, two per long side, about 20 and 40 mm from the finger edge. Each is 3 mm wide with 0.5 mm NPTH
+  holes at 1.0 mm pitch, which keeps drills 0.5 mm apart.
+- **Rails:** 5 mm rails left and right only, with 3 fiducials (1 mm copper, 2 mm opening) and 4 tooling holes (Ø2.0).
+- **Size:** 78.7 × 60.4 mm, which clears 50 × 50.
+- **Checks:** KiCad DRC 0 errors and 0 unconnected; the 104 finger-pad edge findings are the card-edge override, 52 per board.
+  gerber_check (jlcpcb-2layer-cardedge): **all pass, including outline**.
 
-**This panel is not built yet**: `gerber_check` therefore fails `outline` on the single board (31.4 × 60.4 mm < 50 × 50), by
-design. Every other check passes.
+GND stitching vias keep 1.0 mm from the board outline, so they stay clear of the mouse-bites.
 
-**Fallback.** Order the single board with ENIG and without the gold-finger option, then chamfer the finger edge by hand (30°).
+**JLCPCB / JLCONE order options**
+
+PCB:
+
+| Option | Setting |
+|---|---|
+| Base material | FR-4 |
+| Layers | 2 |
+| Dimensions | 78.7 × 60.4 mm |
+| PCB qty | 5 panels (= 10 boards; 5 is JLC's minimum) |
+| Product type | industrial/consumer |
+| Different design | 1 |
+| Delivery format | **Panel by Customer**, 2 × 1 = 2 pcs/panel, break-away = **mouse-bites / tab-route** (no V-cut) |
+| Thickness | **1.0 mm** |
+| Color | any (green is the cheapest) |
+| Surface finish | **ENIG** |
+| Gold fingers | **Yes** |
+| Bevel | **30°**, on the finger edge (the bottom edge of the panel) |
+| Copper weight | 1 oz |
+| Via covering | tented |
+| Remove order number | as preferred |
+| Castellated / impedance | no |
+
+PCBA:
+
+| Option | Setting |
+|---|---|
+| Type | **Economic** |
+| Side | **Top** |
+| Qty | **3 panels = 6 boards** (≥ 5) |
+| Tooling holes | added by customer |
+| Edge rails / fiducials | already on the panel; don't add more |
+| Files | `fab/panel/bobcat-rak-stack-adapter-panel-bom.csv` and `-cpl.csv` |
+
+- **BOM:** J1_0, J1_1 = C444927 (SOFNG PCIE-52P52H, Extended, offered for Economic and Standard); R47P_0, R47P_1 = C17168 (0R 0402, Basic). Every other footprint is DNP and left out.
+- **Economic vs Standard:** J1 is a plain single-sided SMT part that JLCPCB lists for Economic assembly. Standard adds cost and lead
+  time for nothing on this board.
+
+**J1 rotation in JLCPCB's preview.** The KiCad footprint *is* the EasyEDA/JLC footprint for C444927 (imported unchanged), placed at
+180°. The CPL's 180° therefore puts JLC's model in the same frame. In the preview, check three things:
+- The socket body sits over both pad rows, with its card slot opening toward the board's hold-down holes, away from the gold fingers.
+- The **larger Ø1.8 peg is on the left** (fingers at the bottom) and the Ø1.3 peg on the right. The pegs are asymmetric, so a wrong
+  rotation shows up as pegs off their holes.
+- R47P sits at 270° on its two pads, left of the option row.
+
+If the preview shows the pegs swapped or the body off the pads, set J1 to 0° there; don't edit the files.
+
+Sources: [JLCPCB: edge rails and fiducials for assembly](https://jlcpcb.com/help/article/how-to-add-edge-rails-fiducials-for-pcb-assembly-order),
+[JLCPCB: process edges and positioning holes](https://jlcpcb.com/help/article/specifications-for-adding-process-edges-and-positioning-holes),
+[JLCPCB assembly capabilities](https://jlcpcb.com/capabilities/pcb-assembly-capabilities),
+[C444927](https://jlcpcb.com/partdetail/C444927).
+
+The single board's REVIEW zip in `fab/` fails `outline` (31.4 × 60.4 mm < 50 × 50) by design and is for review only. Order the panel.
 
 ## Design status (2026-10-22)
 
@@ -152,7 +206,7 @@ The design starts in a tscircuit-based board pipeline (pcb-factory, board `bobca
 3. Freerouting 2.4.1 (150 passes) gave 0 unrouted after pours (`pipeline/freerouting.log`).
 4. `ses_to_kicad.py` imports the routes.
 5. `space_vias.py` restores 0.5 mm drill spacing if any via pair is closer; nothing needed moving on this route.
-6. `stitch_gnd.py` places 144 stitching vias (grid, then targeted fragments, then a prune of floating ones). Zone refills are
+6. `stitch_gnd.py` places 131 stitching vias, each ≥ 1.0 mm from the outline, (grid, then targeted fragments, then a prune of floating ones). Zone refills are
    done by `kicad-cli` between passes.
 7. `run_pipeline.sh` runs steps 4–6; `export.sh` makes the package.
 
@@ -172,7 +226,7 @@ Results:
 - **Factory loop.** Every hard gate passes. The loop stops on the soft gate `completeness ≥ 3.0` (Jev 2.98) with `edit_source` and
   names no defect, the same as rev A. It is **not export_ready**, and the fab zip here was made with kicad-cli directly and is
   marked REVIEW. Nothing has been ordered or uploaded.
-- Routing: 355 track segments, 45 routed vias, 144 GND stitching vias.
+- Routing: 355 track segments, 45 routed vias, 131 GND stitching vias.
 
 ## Files
 

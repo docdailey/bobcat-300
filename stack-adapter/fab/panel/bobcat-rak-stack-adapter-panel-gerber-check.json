@@ -1,0 +1,92 @@
+{
+ "ran": true,
+ "zip": "/tmp/ipcheck/sa-panel.zip",
+ "fab": "jlcpcb-2layer-cardedge",
+ "ok": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "layers",
+   "status": "pass",
+   "value": {
+    "copper": 2,
+    "outline": true,
+    "drill": true,
+    "top_mask": true,
+    "bottom_mask": true,
+    "top_paste": true,
+    "bottom_paste": true,
+    "near_empty_files": []
+   },
+   "limit": 2,
+   "note": ""
+  },
+  {
+   "check": "outline",
+   "status": "pass",
+   "value": {
+    "w_mm": 78.7,
+    "h_mm": 60.4
+   },
+   "limit": {
+    "min": [
+     50,
+     50
+    ],
+    "max": [
+     400,
+     500
+    ]
+   },
+   "note": ""
+  },
+  {
+   "check": "drill_size",
+   "status": "pass",
+   "value": 0.3,
+   "limit": 0.3,
+   "note": "408 holes, 408 plated"
+  },
+  {
+   "check": "drill_pair",
+   "status": "pass",
+   "value": 0.5,
+   "limit": 0.5,
+   "note": "closest at (117.1, -38.1, 117.1, -39.1)"
+  },
+  {
+   "check": "drill_edge",
+   "status": "pass",
+   "value": 1.4,
+   "limit": 0.3,
+   "note": ""
+  },
+  {
+   "check": "paste_copper_top",
+   "status": "pass",
+   "value": {
+    "paste_flashes": 140,
+    "orphans": 0
+   },
+   "limit": 0,
+   "note": "paste apertures with no copper flash under them"
+  },
+  {
+   "check": "paste_copper_bottom",
+   "status": "pass",
+   "value": {
+    "paste_flashes": 0,
+    "orphans": 0
+   },
+   "limit": 0,
+   "note": "paste apertures with no copper flash under them"
+  },
+  {
+   "check": "aperture_min",
+   "status": "pass",
+   "value": 0.14,
+   "limit": 0.127,
+   "note": ""
+  }
+ ]
+}

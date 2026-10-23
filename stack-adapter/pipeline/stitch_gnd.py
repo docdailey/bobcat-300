@@ -48,7 +48,7 @@ for d in board.GetDrawings():
         for p in (a, b):
             xs.append(p.x)
             ys.append(p.y)
-EDGE = mm(0.3)  # min_copper_edge_clearance of the fab profile
+EDGE = mm(1.0)  # 0.3 fab edge rule, raised to 1.0 so the 2-up panel's mouse-bites (0.5 mm, on the long edges) keep 0.5 mm drill spacing and the via is not cracked at break-off
 finger_edge = max(ys)
 
 segs, circles, rects = [], [], []
