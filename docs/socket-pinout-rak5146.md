@@ -47,7 +47,7 @@ Status tags: **[VERIFIED: source]**, **[UNVERIFIED: source]**, **[CONTRADICTED: 
 
 ## Interposer specification
 
-- Card-edge (gold-finger) mini-PCIe board, full-size outline, 0.8 mm, plugs into the Bobcat; mini-PCIe socket on top for the RAK5146.
+- Card-edge (gold-finger) mini-PCIe board, full-size outline, 1.0 mm, plugs into the Bobcat; mini-PCIe socket on top for the RAK5146.
 - Reroute: Bobcat 3 → RAK 45 (SCK), 5 → 47 (MISO), 6 → 49 (MOSI), 7 → 51 (CS).
 - Isolate: 19 and 23 (do not pass through).
 - Straight through: 3.3 V (2, 24, 39, 41, 52), all grounds, 22 (held low = RAK running).

@@ -2,7 +2,7 @@
 
 **Status: design in progress, not yet fabricated or tested.**
 
-A full-size mini-PCIe card-edge board (0.8 mm, gold fingers) that plugs into the Bobcat G285 concentrator socket, with a
+A full-size mini-PCIe card-edge board (1.0 mm, gold fingers) that plugs into the Bobcat G285 concentrator socket, with a
 mini-PCIe socket on top for a RAK5146 (SX1303 + ZOE-M8Q GPS, SPI variant).
 
 ## Why
@@ -29,3 +29,18 @@ The G285 socket carries SPI on pins 3/5/6/7. RAK's cards expect 45/47/49/51. See
 - Original pin positions for 3/5/6/7 and 45/47/49/51 are on jumpers, default open, so the reroute can be undone.
 
 Design files and fab outputs will land here after review.
+
+## Design status (2026-10-22)
+
+Drafted in a tscircuit-based board pipeline; **not fab-ready**.
+
+- 4-layer, **1.0 mm** (PCI-SIG Mini Card thickness), ENIG with hard-gold fingers and a 30° bevel. The outline is 50 × 109.5 mm
+  because JLCPCB won't bevel fingers on boards under 50 mm, so the board overhangs the G285 by about 58 mm (a bench
+  fixture; the lid won't close).
+- Card edge per the PCI-SIG Mini Card Electromechanical Spec Rev 1.2: 52 contacts, key, Ø2.6 mm hold-down holes.
+- RAK socket: SOFNG PCIE-52P52H (LCSC C444927). The RAK card needs ~3.2 mm M2 standoffs.
+- 37 solder jumpers: reroute closed, original 3/5/6/7 ↔ 45/47/49/51 and 19/23 open; two 2×18 breakout headers.
+- Routing: 99.5% routed, 1 open net (a ground link) and 7 DRC errors from the auto-router. To finish, either rerun with
+  Freerouting or complete it by hand in KiCad, then run a full KiCad DRC.
+- **Before fab: check the finger face orientation** (odd vs even contacts on top) against a known card. On a working
+  card, pin 4 (GND) is the 2nd contact from the short-end on the even face; pins 9 and 15 (GND) are on the odd face.
