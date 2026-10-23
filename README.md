@@ -4,6 +4,10 @@ Repurposing the **Bobcat Miner 300** (board **G285-V1.0**, Rockchip **RK3566**, 
 Helium hotspot into an open, hackable LoRa node for **time transfer** experiments, the goal being two-way LoRa
 time transfer between nodes, validated against GNSS PPS.
 
+![G285 → RAK5146 stack adapter](stack-adapter/renders/bobcat-rak-stack-adapter-3d-iso.png)
+
+*The [stack adapter](stack-adapter/): plugs into the G285 concentrator socket and carries a RAK5146 (SX1303 + GPS) on top.*
+
 Everything here is fact-checked. Every claim in `docs/` ends with a tag:
 
 - **[VERIFIED: source]**: checked against a primary source (code, device tree, datasheet, logic-analyzer capture, meter

@@ -8,6 +8,11 @@ no breakout and no jumper field. Rev A, the large breakout interposer, is in [..
 
 ![3D](renders/bobcat-rak-stack-adapter-3d-iso.png)
 
+| Socket close-up | Top copper | Bottom copper |
+|---|---|---|
+| ![socket](renders/bobcat-rak-stack-adapter-3d-socket.png) | ![top](renders/bobcat-rak-stack-adapter-pcb-top.png) | ![bottom](renders/bobcat-rak-stack-adapter-pcb-bottom.png) |
+
+
 ## Why
 
 The G285 socket carries SPI on pins 3/5/6/7. RAK's cards expect it on 45/47/49/51. The pinout was proven with a logic
