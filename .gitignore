@@ -1,0 +1,10 @@
+# KiCad local state
+*.kicad_prl
+*.lck
+~*.lck
+*-backups/
+fp-info-cache
+_autosave-*
+#auto_saved_files#
+# macOS
+.DS_Store
