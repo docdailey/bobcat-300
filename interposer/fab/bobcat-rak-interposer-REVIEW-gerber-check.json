@@ -1,0 +1,92 @@
+{
+ "ran": true,
+ "zip": "/tmp/ipcheck/review-gerbers.zip",
+ "fab": "jlcpcb-4layer-cardedge",
+ "ok": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "layers",
+   "status": "pass",
+   "value": {
+    "copper": 4,
+    "outline": true,
+    "drill": true,
+    "top_mask": true,
+    "bottom_mask": true,
+    "top_paste": true,
+    "bottom_paste": true,
+    "near_empty_files": []
+   },
+   "limit": null,
+   "note": ""
+  },
+  {
+   "check": "outline",
+   "status": "pass",
+   "value": {
+    "w_mm": 50.1,
+    "h_mm": 109.6
+   },
+   "limit": {
+    "min": [
+     50,
+     50
+    ],
+    "max": [
+     400,
+     500
+    ]
+   },
+   "note": ""
+  },
+  {
+   "check": "drill_size",
+   "status": "pass",
+   "value": 0.2,
+   "limit": 0.15,
+   "note": "414 holes, 414 plated"
+  },
+  {
+   "check": "drill_pair",
+   "status": "pass",
+   "value": 0.402,
+   "limit": 0.2,
+   "note": "closest at (90.42, -95.66, 91.02, -95.66)"
+  },
+  {
+   "check": "drill_edge",
+   "status": "pass",
+   "value": 0.45,
+   "limit": 0.2,
+   "note": ""
+  },
+  {
+   "check": "paste_copper_top",
+   "status": "pass",
+   "value": {
+    "paste_flashes": 128,
+    "orphans": 0
+   },
+   "limit": 0,
+   "note": "paste apertures with no copper flash under them"
+  },
+  {
+   "check": "paste_copper_bottom",
+   "status": "pass",
+   "value": {
+    "paste_flashes": 0,
+    "orphans": 0
+   },
+   "limit": 0,
+   "note": "paste apertures with no copper flash under them"
+  },
+  {
+   "check": "aperture_min",
+   "status": "pass",
+   "value": 0.127,
+   "limit": 0.09,
+   "note": ""
+  }
+ ]
+}
