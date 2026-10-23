@@ -12,6 +12,11 @@
  *   3.3 V  2/24/39/41/52 tied;  GND all ground pins + socket tabs;  22 straight
  *   19, 23 NOT connected; DNP 0402 0R options for 19, 23 (RAK GPS PPS out,
  *   GPS reset in) and 30-33 (RAK GPS I2C / UART) so they can be enabled later.
+ *   GPS PPS to the Bobcat SoC (GMAC1's PHC has no programmable pins): RAK 19
+ *   -> R47P (0R, FITTED) -> finger 47 = Bobcat GPIO4_D0; R45P (0R, DNP) is the
+ *   alternate to finger 45 = GPIO4_C7. Both Bobcat pins are spare inputs
+ *   (read-only EXT_PORT scan + 1k pull, 2026-10-22). With R19/R45P open the RAK
+ *   19 net touches only R47P.
  *   Every other pin is left unconnected on both sides.
  *
  * Mechanics (PCI Express Mini Card Electromechanical Spec Rev 1.2):
@@ -20,13 +25,21 @@
  *   top-side component keep-out 3.20 from the edge (4.20 at the key, fig 2-7);
  *   Bobcat hold-down holes dia 2.6 at 48.05, 24.20 apart (fig 2-3).
  *   RAK socket: SOFNG PCIE-52P52H (LCSC C444927), card plane at 3.25 mm (card
- *   underside 2.75 mm). Everything of J1 (odd-row pads, solder tabs) reaches
- *   5.1 mm in front of its card-edge line S, so S = 9.3 puts all of it 4.2 mm
- *   from the finger edge: the stricter (key-area) value of the fig 2-7 top-side
- *   keep-out, applied across the whole width, so the Bobcat socket's housing lip
- *   is cleared anywhere along the edge. The RAK card then spans 9.3..60.3 mm, its
- *   hold-down holes sit at S + 48.05 = 57.35 mm (9.3 past the Bobcat holes), and
- *   the 5.8 mm keep-out square round them sets the 60.3 mm length. The socket's
+ *   underside 2.75 mm). J1's odd-row pads and solder tabs reach S - 5.1, its
+ *   body (silk outline) S - 3.8. Pin N of J1 sits at the same x as finger N.
+ *   Limits, all from the finger edge:
+ *     - fig 2-7 top-side component keep-out for the host connector: 3.20 MIN
+ *       (fig 2-9: host housing reaches 3.20 MAX), 4.20 behind the key slot;
+ *     - J1's solder tabs over the corner notches (edge at 3.20) need the fab
+ *       profile's 0.30 copper-to-edge -> tab front >= 3.50 (S >= 8.6);
+ *     - routing escape (binding): the top fingers that leave sideways (SPI 3/5/7,
+ *       PPS 47/45, options) need a via between their end (2.55) and J1's pads,
+ *       with the bottom fingers' traces (MOSI 6) passing between those vias.
+ *       Freerouting completes at S = 9.3 (gap 1.65); at 8.6-9.1 it leaves 3-8
+ *       nets unrouted.
+ *   So S = 9.3: J1 pads at 4.20 (body 5.50), RAK card 9.3..60.25 mm, RAK holes
+ *   at S + 48.05 = 57.35 mm, and the 5.8 mm keep-out square round them sets the
+ *   60.3 mm length. The socket's
  *   solder tabs reach x = +-15.3 mm (every Mini Card host socket is wider than
  *   the card), so the outline has 0.65 mm ears there.
  *
@@ -38,10 +51,10 @@ import { PCIE_52P52H } from "../../imports/PCIE_52P52H"
 const SOCKET = (PCIE_52P52H({} as any) as any).props
 
 // --- geometry (design frame: x across the card, y from the finger edge) -----
-const S = 9.3 // RAK socket card-edge line: J1's front (S - 5.1) at 4.2 mm, fig 2-7 key-area keep-out
+const S = 9.3 // RAK socket card-edge line: closest that routes (see above)
 const L = 60.3 // S + 48.05 + half the 5.8 mm hold-down keep-out, rounded up
 const EAR = 15.65 // half-width at the solder tabs: tab copper reaches +-15.3, plus the 0.3 mm edge rule
-const TAB0 = +(S - 5.6).toFixed(2), TAB1 = +(S - 1.4).toFixed(2) // ears: tab copper S-5.1..S-1.9, +0.5
+const TAB0 = 3.2, TAB1 = +(S - 1.4).toFixed(2) // ears from the notch top (3.20) to tab copper end S-1.9 + 0.5
 const Y0 = -L / 2
 const Y = (y: number) => +(y + Y0).toFixed(4)
 const CONTACT = 2.55
@@ -53,6 +66,7 @@ const GND = [4, 9, 15, 18, 21, 26, 27, 29, 34, 35, 37, 40, 43, 50]
 const PWR = [2, 24, 39, 41, 52]
 const SPI: Record<number, number> = { 3: 45, 5: 47, 6: 49, 7: 51 }
 const OPTIONS = [19, 23, 30, 31, 32, 33] // DNP 0R, Bobcat n <-> RAK n
+const PPS = [{ name: "R45P", finger: 45, x: -6.2 }, { name: "R47P", finger: 47, x: -8.4 }] // RAK 19 -> finger
 
 const fingerNet = (n: number): string | undefined =>
   GND.includes(n) ? "net.GND"
@@ -60,7 +74,8 @@ const fingerNet = (n: number): string | undefined =>
       : n === 22 ? "net.RST22"
         : SPI[n] ? `net.SPI_${n}_${SPI[n]}`
           : OPTIONS.includes(n) ? `net.B${n}`
-            : undefined
+            : PPS.some((p) => p.finger === n) ? `net.F${n}`
+              : undefined
 const socketNet = (n: number): string | undefined => {
   const spi = Object.entries(SPI).find(([, r]) => r === n)
   return GND.includes(n) ? "net.GND"
@@ -81,11 +96,10 @@ const slot = (() => {
   return [{ x: cx - r, y: 0 }, ...arc, { x: cx + r, y: 0 }]
 })()
 const OUTLINE = [
-  { x: -12.85, y: 0 }, ...slot, { x: 12.85, y: 0 }, { x: 12.85, y: 3.2 },
-  { x: 15, y: 3.2 }, { x: 15, y: TAB0 }, { x: EAR, y: TAB0 }, { x: EAR, y: TAB1 }, { x: 15, y: TAB1 },
+  { x: -12.85, y: 0 }, ...slot, { x: 12.85, y: 0 }, { x: 12.85, y: TAB0 },
+  { x: EAR, y: TAB0 }, { x: EAR, y: TAB1 }, { x: 15, y: TAB1 },
   { x: 15, y: L }, { x: -15, y: L },
-  { x: -15, y: TAB1 }, { x: -EAR, y: TAB1 }, { x: -EAR, y: TAB0 }, { x: -15, y: TAB0 },
-  { x: -15, y: 3.2 }, { x: -12.85, y: 3.2 },
+  { x: -15, y: TAB1 }, { x: -EAR, y: TAB1 }, { x: -EAR, y: TAB0 }, { x: -12.85, y: TAB0 },
 ].map((p) => ({ x: p.x, y: Y(p.y) }))
 
 // --- the card edge: two contact groups either side of the key -----------------
@@ -158,6 +172,12 @@ export default ({
         connections={{ pin1: `net.B${n}`, pin2: `net.R${n}` }} />
     ))}
 
+    {PPS.map((p) => (
+      <resistor key={p.name} name={p.name} resistance="0" footprint="0402"
+        pcbX={p.x} pcbY={Y(OPTION_Y)} pcbRotation={270}
+        connections={{ pin1: `net.F${p.finger}`, pin2: "net.R19" }} />
+    ))}
+
     {/* Bobcat hold-down (card holes, fig 2-3) and RAK hold-down at S + 48.05 */}
     <hole diameter="2.6mm" pcbX={-12.1} pcbY={Y(48.05)} />
     <hole diameter="2.6mm" pcbX={12.1} pcbY={Y(48.05)} />
@@ -168,6 +188,7 @@ export default ({
     <silkscreentext text="STACK ADAPTER  rev B" pcbX={0} pcbY={Y(31)} fontSize="1.2mm" />
     <silkscreentext text="SPI 3>45 5>47 6>49 7>51" pcbX={0} pcbY={Y(28.5)} fontSize="0.9mm" />
     <silkscreentext text="19 23 NC; R19 R23 R30-33 DNP 0R" pcbX={0} pcbY={Y(27)} fontSize="0.9mm" />
+    <silkscreentext text="PPS: RAK19 → R47P → 47 → GPIO4_D0" pcbX={0} pcbY={Y(25.5)} fontSize="0.9mm" />
     <silkscreentext text="1.0mm ENIG 30deg BEVEL" pcbX={0} pcbY={Y(37)} fontSize="0.9mm" />
 
     <schematicsheet />

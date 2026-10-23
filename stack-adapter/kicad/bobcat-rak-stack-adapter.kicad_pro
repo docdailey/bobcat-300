@@ -4,8 +4,8 @@
     "generator": "circuit-json-to-kicad",
     "generator_version": "0.0.1",
     "project_name": "circuit.circuit",
-    "created": "2026-10-23T03:36:02.815Z",
-    "modified": "2026-10-23T03:36:02.815Z"
+    "created": "2026-10-23T04:34:40.527Z",
+    "modified": "2026-10-23T04:34:40.527Z"
   },
   "meta": {
     "version": 1
@@ -76,11 +76,11 @@
   },
   "sheets": [
     [
-      "628ea8c8-192e-4310-a4db-3741b4739c48",
+      "941f059c-d86e-4bf2-b763-0686be38502e",
       "Root"
     ],
     [
-      "0a1f80b1-f6b3-4dfc-b32a-738326623ca8",
+      "b7b2ad3d-d502-4076-926c-232a800170e5",
       "Sheet 1"
     ]
   ]

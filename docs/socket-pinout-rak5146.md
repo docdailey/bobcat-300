@@ -57,7 +57,8 @@ Status tags: **[VERIFIED: source]**, **[UNVERIFIED: source]**, **[CONTRADICTED: 
   big: [../interposer-rev-a/](../interposer-rev-a/).
 - **Rev B, the stack adapter** ([../stack-adapter/](../stack-adapter/)): Mini Card width, 60.3 mm long, RAK socket right behind
   the fingers so the RAK card stacks over the Bobcat's card area. Only the four SPI reroutes, 3.3 V, GND and 22; 19/23 not
-  connected (DNP 0R options for 19, 23, 30–33). No breakout. Routed and KiCad-DRC-clean; not fabricated.
+  connected (DNP 0R options for 19, 23, 30–33). GPS PPS goes to the SoC: RAK 19 → R47P (0R, fitted) → finger 47 = GPIO4_D0
+  (R45P DNP → finger 45 = GPIO4_C7). No breakout. Routed and KiCad-DRC-clean; not fabricated.
   **[UNVERIFIED: not built or tested]**
 
 ## Lessons (methods)

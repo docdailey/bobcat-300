@@ -18,7 +18,7 @@ $KC pcb export drill --format excellon --excellon-separate-th --excellon-units m
   -o "$P/fab/gerbers/" $B.kicad_pcb >/dev/null
 (cd "$P/fab/gerbers" && rm -f "../$B-REVIEW-gerbers.zip" && zip -q "../$B-REVIEW-gerbers.zip" *)
 $KC pcb export pos --format csv --units mm --side both --exclude-dnp -o "/tmp/$B-pos.csv" $B.kicad_pcb >/dev/null
-# JLCPCB CPL + BOM (J1 only populated; the six 0R options are listed as DNP)
+# JLCPCB CPL + BOM (J1 and R47P populated; the seven 0R options are listed as DNP)
 python3 - "/tmp/$B-pos.csv" "$P/fab/$B" <<'PY'
 import csv, sys
 rows = list(csv.DictReader(open(sys.argv[1])))
@@ -26,11 +26,12 @@ with open(sys.argv[2] + "-cpl.csv", "w", newline="") as f:
     w = csv.writer(f); w.writerow(["Designator", "Mid X", "Mid Y", "Layer", "Rotation"])
     for r in rows:
         w.writerow([r["Ref"], f'{float(r["PosX"]):.3f}mm', f'{float(r["PosY"]):.3f}mm',
-                    "Top" if r["Side"] == "top" else "Bottom", f'{float(r["Rot"]):.0f}'])
+                    "Top" if r["Side"] == "top" else "Bottom", f'{float(r["Rot"]) % 360:.0f}'])
 with open(sys.argv[2] + "-bom.csv", "w", newline="") as f:
     w = csv.writer(f); w.writerow(["Comment", "Designator", "Footprint", "LCSC", "Manufacturer", "MPN", "Qty", "Populate"])
     w.writerow(["PCIE-52P52H Mini PCIe socket", "J1", "PCIE-52P52H", "C444927", "SOFNG", "PCIE-52P52H", 1, "yes"])
-    w.writerow(["0R 0402 (option links, DNP)", "R19,R23,R30,R31,R32,R33", "0402", "C17168", "UNI-ROYAL", "0402WGF0000TCE", 6, "no (DNP)"])
+    w.writerow(["0R 0402 (GPS PPS: RAK 19 -> finger 47)", "R47P", "0402", "C17168", "UNI-ROYAL", "0402WGF0000TCE", 1, "yes"])
+    w.writerow(["0R 0402 (option links, DNP)", "R19,R23,R30,R31,R32,R33,R45P", "0402", "C17168", "UNI-ROYAL", "0402WGF0000TCE", 7, "no (DNP)"])
 PY
 # renders: flat
 $KC pcb export svg --layers F.Cu,F.Mask,F.Silkscreen,Edge.Cuts,User.Drawings --mode-single --fit-page-to-board --exclude-drawing-sheet -o "$P/renders/$B-pcb-top.svg" $B.kicad_pcb >/dev/null

@@ -47,14 +47,14 @@
    "status": "pass",
    "value": 0.3,
    "limit": 0.3,
-   "note": "193 holes, 193 plated"
+   "note": "195 holes, 195 plated"
   },
   {
    "check": "drill_pair",
    "status": "pass",
-   "value": 0.516,
+   "value": 0.507,
    "limit": 0.5,
-   "note": "closest at (108.76, -122.81, 109.57, -122.78)"
+   "note": "closest at (108.12, -126.6, 108.91, -126.78)"
   },
   {
    "check": "drill_edge",
@@ -67,7 +67,7 @@
    "check": "paste_copper_top",
    "status": "pass",
    "value": {
-    "paste_flashes": 66,
+    "paste_flashes": 70,
     "orphans": 0
    },
    "limit": 0,

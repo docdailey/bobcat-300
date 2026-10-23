@@ -1,12 +1,12 @@
 G04 #@! TF.GenerationSoftware,KiCad,Pcbnew,10.0.4*
-G04 #@! TF.CreationDate,2026-10-22T22:44:46-05:00*
+G04 #@! TF.CreationDate,2026-10-22T23:36:53-05:00*
 G04 #@! TF.ProjectId,bobcat-rak-stack-adapter,626f6263-6174-42d7-9261-6b2d73746163,rev?*
 G04 #@! TF.SameCoordinates,Original*
 G04 #@! TF.FileFunction,Soldermask,Top*
 G04 #@! TF.FilePolarity,Negative*
 %FSLAX46Y46*%
 G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
-G04 Created by KiCad (PCBNEW 10.0.4) date 2026-10-22 22:44:46*
+G04 Created by KiCad (PCBNEW 10.0.4) date 2026-10-22 23:36:53*
 %MOMM*%
 %LPD*%
 G01*
@@ -114,6 +114,11 @@ D14*
 G04 #@! TO.C,MH2*
 X112100000Y-82100000D03*
 G04 #@! TD*
+D17*
+G04 #@! TO.C,R45P*
+X93800000Y-111840000D03*
+X93800000Y-112860000D03*
+G04 #@! TD*
 D16*
 G04 #@! TO.C,MH4*
 X112100000Y-72800000D03*
@@ -156,5 +161,9 @@ D17*
 G04 #@! TO.C,R30*
 X100400000Y-111840000D03*
 X100400000Y-112860000D03*
+G04 #@! TD*
+G04 #@! TO.C,R47P*
+X91600000Y-111840000D03*
+X91600000Y-112860000D03*
 G04 #@! TD*
 M02*

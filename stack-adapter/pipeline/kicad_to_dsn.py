@@ -185,7 +185,19 @@ signal = [n for n in nets if n not in power]
 w(f"    (class signal {' '.join(q(n) for n in signal)} (circuit (use_via \"Via[0-3]_{VIA_PAD_UM}:{VIA_HOLE_UM}_um\")) (rule (width {WIDTH_UM}) (clearance {CLEAR_UM}) (clearance {VIA_VIA_UM} (type via_via))))")
 w(f"    (class power {' '.join(q(n) for n in power)} (circuit (use_via \"Via[0-3]_{VIA_PAD_UM}:{VIA_HOLE_UM}_um\")) (rule (width {POWER_WIDTH_UM}) (clearance {CLEAR_UM}) (clearance {VIA_VIA_UM} (type via_via))))")
 w("  )")
-w("  (wiring)")
+# any copper already on the board goes over as protected wiring: Freerouting
+# routes onwards from it but may not move it (none on this board today)
+w("  (wiring")
+for t in board.GetTracks():
+    net = t.GetNetname()
+    if t.GetClass() == "PCB_VIA":
+        w(f'    (via "Via[0-3]_{VIA_PAD_UM}:{VIA_HOLE_UM}_um" {X(t.GetPosition().x)} {Y(t.GetPosition().y)} '
+          f'(net {q(net)}) (type protect))')
+    else:
+        w(f"    (wire (path {board.GetLayerName(t.GetLayer())} {X(t.GetWidth())} "
+          f"{X(t.GetStart().x)} {Y(t.GetStart().y)} {X(t.GetEnd().x)} {Y(t.GetEnd().y)}) "
+          f"(net {q(net)}) (type protect))")
+w("  )")
 w(")")
 
 with open(dst, "w") as fh:

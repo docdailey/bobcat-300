@@ -60,6 +60,17 @@ def find(node, name):
             yield from find(child, name)
 
 
+# copper already on the board (handed to Freerouting as protected wiring) comes
+# back in the session too: don't add it twice
+have_seg = {(t.GetLayer(), *sorted([(t.GetStart().x, t.GetStart().y), (t.GetEnd().x, t.GetEnd().y)]))
+            for t in board.GetTracks() if t.GetClass() != "PCB_VIA"}
+have_via = {(t.GetPosition().x, t.GetPosition().y) for t in board.GetTracks() if t.GetClass() == "PCB_VIA"}
+
+
+def near(a, b):
+    return abs(a[0] - b[0]) <= 200 and abs(a[1] - b[1]) <= 200   # 0.2 um: DSN rounding
+
+
 tracks = vias = 0
 for net in find(tree, "net"):
     if len(net) < 2 or not isinstance(net[1], str):
@@ -75,6 +86,9 @@ for net in find(tree, "net"):
         width = max(width, MIN_WIDTH)
         pts = [(nm(coords[k]), -nm(coords[k + 1])) for k in range(0, len(coords) - 1, 2)]
         for (ax, ay), (bx, by) in zip(pts, pts[1:]):
+            key = sorted([(ax, ay), (bx, by)])
+            if any(l == LAYER[layer] and near(key[0], a) and near(key[1], b) for l, a, b in have_seg):
+                continue
             t = pcbnew.PCB_TRACK(board)
             t.SetStart(pcbnew.VECTOR2I(ax, ay))
             t.SetEnd(pcbnew.VECTOR2I(bx, by))
@@ -86,6 +100,8 @@ for net in find(tree, "net"):
             tracks += 1
     for via in (c for c in net if isinstance(c, list) and c and c[0] == "via"):
         m = re.search(r"_(\d+):(\d+)_um", via[1])
+        if any(near((nm(via[2]), -nm(via[3])), h) for h in have_via):
+            continue
         v = pcbnew.PCB_VIA(board)
         v.SetPosition(pcbnew.VECTOR2I(nm(via[2]), -nm(via[3])))
         v.SetViaType(pcbnew.VIATYPE_THROUGH)

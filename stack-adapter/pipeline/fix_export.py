@@ -12,8 +12,9 @@ the fix is reproducible and reviewable rather than done by mouse:
      plus rule areas: a 1.0 mm no-copper strip over the finger bevel (JLCPCB)
      and the spec's 5.8 x 5.8 mm component+routing keep-out square at each
      hold-down hole (Mini CEM 1.2 fig 2-7), all layers.
-  4. part data: J1 = SOFNG PCIE-52P52H, LCSC C444927. R19/R23/R30-R33 are DNP
-     0R 0402 options (UNI-ROYAL 0402WGF0000TCE, LCSC C17168). CE1/CE2 are the
+  4. part data: J1 = SOFNG PCIE-52P52H, LCSC C444927. R47P (GPS PPS, RAK 19 ->
+     finger 47) is a fitted 0R 0402 (UNI-ROYAL 0402WGF0000TCE, LCSC C17168);
+     R45P/R19/R23/R30-R33 are DNP 0R options of the same part. CE1/CE2 are the
      card edge (a board feature). The holes, exported without designators,
      become MH1/MH2 (Bobcat hold-down, dia 2.6) and MH3/MH4 (RAK standoffs,
      dia 2.4).
@@ -80,7 +81,18 @@ for fp in board.GetFootprints():
                     p = get()
                     if abs(p.x - cx) > lim:
                         put(pcbnew.VECTOR2I(int(cx + (lim if p.x > cx else -lim)), p.y))
-    elif ref.startswith("R") and ref[1:].isdigit():
+    elif ref == "R47P":
+        # GPS PPS link RAK 19 -> finger 47 (Bobcat GPIO4_D0): the one fitted 0R
+        fp.SetValue("0R")
+        fp.SetField("MPN", "0402WGF0000TCE")
+        fp.SetField("Manufacturer", "UNI-ROYAL")
+        fp.SetField("LCSC", "C17168")
+        for name in ("MPN", "Manufacturer", "LCSC"):
+            f = fp.GetField(name)
+            if f is not None:
+                f.SetVisible(False)
+        fp.Value().SetVisible(False)
+    elif ref.startswith("R") and ref[1:].rstrip("P").isdigit():
         fp.SetValue("0R DNP")
         fp.SetField("MPN", "0402WGF0000TCE")
         fp.SetField("Manufacturer", "UNI-ROYAL")
@@ -167,10 +179,11 @@ for d, pts in sorted(by_drill.items(), reverse=True):
     notes.append(f"{what} dia {d:.1f}: {pcbnew.ToMM(y1 - pts[0][1]):.2f} mm, "
                  f"x +-{pcbnew.ToMM(abs(pts[0][0] - (x0 + x1) / 2)):.2f}")
 notes += [f"RAK socket card-edge line: {pcbnew.ToMM(j1_line):.2f} mm",
-          f"RAK socket front (pads/tabs): {pcbnew.ToMM(j1_front):.2f} mm",
+          f"RAK socket front (pads/tabs): {pcbnew.ToMM(j1_front):.2f} mm "
+          f"(gap to the 2.55 mm fingers {pcbnew.ToMM(j1_front) - 2.55:.2f})",
           f"RAK card end (line + 50.95): {pcbnew.ToMM(j1_line) + 50.95:.2f} mm "
           f"= stock card + {pcbnew.ToMM(j1_line):.2f}",
-          "Mini Card top keep-out: 3.20 (4.20 at key)"]
+          "Mini CEM fig 2-7 top keep-out 3.20 (4.20 at key); tabs 0.30 from notch edge"]
 for i, t in enumerate(notes):
     n = pcbnew.PCB_TEXT(board)
     n.SetText(t)
